@@ -7,6 +7,17 @@ export default function Quiz(props){
     const [allAnswers, setAllAnswers] = React.useState([]);
     const [selectedAnswerIndexes, setSelectedAnswerIndexes] = React.useState([]);
     const [correctAnswers, setCorrectAnswers] = React.useState([])
+    const [allAnswersChecked, setAllAnswersChecked] = React.useState(false)
+    const [endGame, setendGame] = React.useState(false)
+
+    function restartGame() {
+      setAllAnswers([]);
+      setSelectedAnswerIndexes([]);
+      setCorrectAnswers([]);
+      setAllAnswersChecked(false);
+      setendGame(true);
+      props.Quizreset(true);
+    }
 
     React.useEffect(() => {
         if (allData) {
@@ -43,10 +54,12 @@ export default function Quiz(props){
           console.log("Niepoprawna odpowiedź!")
         }
     }
+
     const answerAndQuestionsRender = allData && allData.map((data, questionIndex) => {
           return(
             <div className="questions-main" key={questionIndex}>
               <h3 className="question-question">{decode(data.question)}</h3>
+              <div className="all-answers">
               {allAnswers[questionIndex] && allAnswers[questionIndex].map((answer, answerIndex) => (
                 <button
                   key={answerIndex}
@@ -56,13 +69,26 @@ export default function Quiz(props){
                   {decode(answer)}
                 </button> 
               ))}
+              </div>
             </div>
           )
     });
       
     return(
-        <div>
-          {allData ? answerAndQuestionsRender : <div>Loading...</div>}
+      <div className="quiz-main">
+           <div className="blob-top"></div>
+          {allData ? answerAndQuestionsRender : <Home />}
+          {endGame ? (
+          <button className = "quiz-button" onClick = {restartGame}>
+          Restart Game
+        </button>
+          ):(
+            <button className={allAnswersChecked ? "quiz-button" : "quiz-button-low"} disabled={!allAnswersChecked} onClick={() => setendGame(true)}>
+            Check Answers
+            </button>
+          )}
+        <div className="blob-bottom"></div>
+        <div className="author">Developed by DamyMeister</div>
         </div>
     )
 }

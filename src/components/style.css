@@ -172,3 +172,11 @@ width:100px;
     justify-content: center;
 }
 /*QUESTION - CSS - END */
+/*ADDITION*/
+.author{
+    margin-top: 3rem;
+    margin-bottom:3rem;
+    font-family: Inter,sans-serif;
+    color:#293264;
+    font-weight:200;
+}

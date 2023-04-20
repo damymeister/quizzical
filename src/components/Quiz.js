@@ -73,14 +73,14 @@ export default function Quiz(props){
             </div>
           )
     });
-      
+  /* DO ZROBIENIA JESZCZE TERAZ 1. ZEBY PO ZAZNACZENIU 5 ODPOWIEDZI PRZYCISK ROBIL SIE ENABLED. A POTEM ZEBY WYSWIETLAL WYNIKI. */
     return(
       <div className="quiz-main">
            <div className="blob-top"></div>
           {allData ? answerAndQuestionsRender : <Home />}
           {endGame ? (
           <button className = "quiz-button" onClick = {restartGame}>
-          Restart Game
+          Play Again
         </button>
           ):(
             <button className={allAnswersChecked ? "quiz-button" : "quiz-button-low"} disabled={!allAnswersChecked} onClick={() => setendGame(true)}>

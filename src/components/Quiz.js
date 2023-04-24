@@ -23,6 +23,18 @@ export default function Quiz(props){
       setClickedQuestions([])
       props.Quizreset(true);
     }
+
+    function getClassName(selectedAnswerIndexes, questionIndex, answerIndex, endGame, answer) {
+      if (endGame) {
+        if(selectedAnswerIndexes[questionIndex] === answerIndex && answer === allData[questionIndex].correct_answer) return "question-answer correct"
+        else if (selectedAnswerIndexes[questionIndex] === answerIndex) return "question-answer incorrect"
+        else return "question-answer"
+      } else {
+        return selectedAnswerIndexes[questionIndex] === answerIndex
+          ? "question-answer clicked"
+          : "question-answer";
+      }
+    }
     function shuffle(answer){
       let newAnswer = [...answer];
       for (let i = 0; i < newAnswer.length; i++){
@@ -77,6 +89,7 @@ export default function Quiz(props){
         newSelectedAnswerIndexes[questionIndex] = answerIndex
         setSelectedAnswerIndexes(newSelectedAnswerIndexes);
         if (answer === allData[questionIndex].correct_answer) {
+
           setResult(result + 1)
         } 
     }
@@ -90,7 +103,7 @@ export default function Quiz(props){
                 <button
                   disabled={endGame}
                   key={answerIndex}
-                  className={selectedAnswerIndexes[questionIndex] === answerIndex ? "question-answer-clicked" : "question-answer"}
+                  className={getClassName(selectedAnswerIndexes, questionIndex, answerIndex, endGame, answer)}
                   onClick={() => answerbuttonChanges(answerIndex, questionIndex, answer)}
                 >
                   {decode(answer)}
@@ -109,17 +122,17 @@ export default function Quiz(props){
           <div className="score">
             You scored {result} out of {correctAnswers.length} points.
           </div>
-          <button className = "quiz-button-again" onClick = {restartGame}>
+          <button className = "quiz-button restartGame" onClick = {restartGame}>
           Play Again
           </button>
         </div>
           ):(
-            <button className={allAnswersChecked ? "quiz-button" : "quiz-button-low"} disabled={!allAnswersChecked} onClick={() => setendGame(true)}>
+            <button className={allAnswersChecked ? "quiz-button" : "quiz-button disabled"} disabled={!allAnswersChecked} onClick={() => setendGame(true)}>
             Check Answers
             </button>
           )}
         <div className="blob-bottom"></div>
-        <div className="author">Developed by DamyMeister</div>
+        <div className="author">Developed by <a href="https://www.linkedin.com/in/mateusz-adamczyk-062936209/" target="_blank">DamyMeister</a></div>
         </div>
     )
 }

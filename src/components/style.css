@@ -112,17 +112,9 @@ width:100px;
     font-weight: 700;
     width:20%;
 }
-.quiz-button-low{
-    padding:0.8rem;
+.disabled{
     opacity: 0.5; 
-    background: #4D5B9E;
     cursor: not-allowed;
-    border-radius: 15px;
-    color:white;
-    border-color: transparent;
-    margin-top: 1rem;
-    font-weight: 700;
-    width:20%;
 }
 .scoreAndButton{
     display:flex;
@@ -138,19 +130,9 @@ width:100px;
     font-size: 25px;
     font-weight: bold;
 }
-.quiz-button-again{
-    padding:0.8rem;
-    background: #4D5B9E;
-    border-radius: 15px;
-    color:white;
-    border-color: transparent;
-    cursor: pointer;
-    margin-top: 1rem;
-    font-weight: 700;
+.restartGame{
     width:30%;
 }
-/*QUIZ - CSS - END */
-/*QUESTION - CSS */
 .questions-main{
     display:flex;
     flex-direction: column;
@@ -159,13 +141,13 @@ width:100px;
     border-bottom: 0.8px solid #dbdef0;
     margin-bottom: 1em;
     padding-bottom: 10px;
-    width: 55%; /* Ustawienie szerokości elementu */
+    width: 55%; 
     margin: 0 auto;
 }
 .question-question{
     color: #293264;
     font-family: Karla,sans-serif;
-    font-size: 1.0em;
+    font-size: 1.1em;
 }
 .question-answer{
     background-color: #f5f7fb;
@@ -174,30 +156,28 @@ width:100px;
     color: #293264;
     cursor: pointer;
     font-family: Inter,sans-serif;
-    font-weight: 500;
+    font-weight: 550;
     margin: 0 12px 12px 0;
     min-height: 25px;
     min-width: 65px;
 }
-.question-answer-clicked{
-    background-color: #d6dbf5;
-    border: 0.8px solid #4d5b9e;
-    border-radius: 8px;
-    color: #293264;
-    cursor: pointer;
-    font-family: Inter,sans-serif;
-    font-weight: 500;
-    margin: 0 12px 12px 0;
-    min-height: 25px;
-    min-width: 65px;
+.correct{
+    background-color: green !important;
+}
+.incorrect{
+    background-color: red !important;
+    opacity: 0.5;
+}
+.clicked{
+    background-color: #d6dbf5 !important;
 }
 .all-answers{
     display:flex;
     flex-direction: row;
     justify-content: center;
 }
-/*QUESTION - CSS - END */
-/*ADDITION*/
+/*QUIZZ - CSS - END */
+/*Footer*/
 .author{
     margin-top: 3rem;
     margin-bottom:3rem;

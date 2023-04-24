@@ -30,17 +30,21 @@ export default function Home(props) {
 		setclickButtonavilable(true)
 	  const url =
 		"https://opentdb.com/api.php?amount=" + gameOptions.amount + "&category=" + gameOptions.category +"&type=" + gameOptions.type;
+	try{
 	  fetch(url)
 		.then((res) => res.json())
 		.then((data) => setallQuestionsandAnswers(data.results))
 		.catch((error) => console.log(error));
 	}
+	catch(error){
+		console.log("Nie udalo sie wczytac pytan")
+	}
+	}
   }, [gameOptions]);
 
   function changeView() {
-    props.viewChange(allQuestionsandAnswers)
+	if(allQuestionsandAnswers) props.viewChange(allQuestionsandAnswers)
   }
-console.log(allQuestionsandAnswers)
     return(
 
   <div className="home-main">

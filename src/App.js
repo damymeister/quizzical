@@ -6,8 +6,7 @@ export default function App() {
   const [allData, setAllData] = React.useState([])
   const [quizStart, setQuizStart] = React.useState(false)
   const [resetQuiz, setResetQuiz] = React.useState(false)
-
-
+  
   function viewChange(propsQuestionsAnswers) {
     setAllData(propsQuestionsAnswers)
     setQuizStart(true)

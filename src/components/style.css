@@ -124,6 +124,31 @@ width:100px;
     font-weight: 700;
     width:20%;
 }
+.scoreAndButton{
+    display:flex;
+    flex-direction: row;
+    width:45%;
+    justify-content: space-between;
+    align-items: center;
+    margin:2rem;
+}
+.score{
+    margin-right:3rem;
+    color:#4D5B9E;
+    font-size: 25px;
+    font-weight: bold;
+}
+.quiz-button-again{
+    padding:0.8rem;
+    background: #4D5B9E;
+    border-radius: 15px;
+    color:white;
+    border-color: transparent;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: 700;
+    width:30%;
+}
 /*QUIZ - CSS - END */
 /*QUESTION - CSS */
 .questions-main{

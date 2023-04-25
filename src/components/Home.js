@@ -43,7 +43,7 @@ export default function Home(props) {
   }, [gameOptions]);
 
   function changeView() {
-	if(allQuestionsandAnswers) props.viewChange(allQuestionsandAnswers)
+	if(allQuestionsandAnswers.length) props.viewChange(allQuestionsandAnswers)
   }
     return(
 

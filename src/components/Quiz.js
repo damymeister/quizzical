@@ -12,6 +12,8 @@ export default function Quiz(props){
     const [result, setResult] = React.useState(0)
     const [countAnswers, setcountAnswers] = React.useState(1)
     const [clickedQuestions, setClickedQuestions] = React.useState([]); 
+    const [clickedCorrectAnswers, setclickedCorrectAnswers] = React.useState([]);
+    const [isPreviousQuestionSet, setisPreviousQuestionSet] = React.useState([])
     function restartGame() {
       setAllAnswers([]);
       setSelectedAnswerIndexes([]);
@@ -21,12 +23,14 @@ export default function Quiz(props){
       setResult(0);
       setcountAnswers(0);
       setClickedQuestions([])
+      setclickedCorrectAnswers([])
+      setisPreviousQuestionSet([])
       props.Quizreset(true);
     }
 
     function getClassName(selectedAnswerIndexes, questionIndex, answerIndex, endGame, answer) {
       if (endGame) {
-        if(selectedAnswerIndexes[questionIndex] === answerIndex && answer === allData[questionIndex].correct_answer) return "question-answer correct"
+        if(selectedAnswerIndexes[questionIndex] === answerIndex && answer === allData[questionIndex].correct_answer) return "question-answer correct "
         else if (selectedAnswerIndexes[questionIndex] === answerIndex) return "question-answer incorrect"
         else return "question-answer"
       } else {
@@ -77,7 +81,7 @@ export default function Quiz(props){
     
     function answerbuttonChanges(answerIndex, questionIndex, answer) {
         const newSelectedAnswerIndexes = selectedAnswerIndexes.slice()
-
+        const newisPreviousQuestionSet = isPreviousQuestionSet.slice()
         if(clickedQuestions.indexOf(questionIndex) !== -1)
         {
           setcountAnswers(countAnswers);
@@ -88,16 +92,42 @@ export default function Quiz(props){
         }
         newSelectedAnswerIndexes[questionIndex] = answerIndex
         setSelectedAnswerIndexes(newSelectedAnswerIndexes);
-        if (answer === allData[questionIndex].correct_answer) {
-
+        
+        if (isPreviousQuestionSet[questionIndex] === undefined) {
+          if(answer === allData[questionIndex].correct_answer){
           setResult(result + 1)
+          newisPreviousQuestionSet[questionIndex] = true
+          setisPreviousQuestionSet(newisPreviousQuestionSet)
+          }
+          else{
+            setResult(result)
+          }
         } 
+        else{
+          if(isPreviousQuestionSet[questionIndex] === true){//If previous answer was true
+            if(answer !== allData[questionIndex].correct_answer){
+              setResult(result - 1)
+              newisPreviousQuestionSet[questionIndex] = false
+              setisPreviousQuestionSet(newisPreviousQuestionSet)
+                }
+          }else{//If previous answer was false
+            if(answer === allData[questionIndex].correct_answer){
+              setResult(result + 1)
+              newisPreviousQuestionSet[questionIndex] = true
+              setisPreviousQuestionSet(newisPreviousQuestionSet)
+            }
+        }
+    }
+
     }
 
     const answerAndQuestionsRender = allData && allData.map((data, questionIndex) => {
           return(
-            <div className="questions-main" key={questionIndex}>
-              <h3 className="question-question">{decode(data.question)}</h3>
+            <div className="questions-main " key={questionIndex}>
+              <div className="question-icon">
+              <h3 className="question-question ">{decode(data.question)}</h3>
+              <div className={endGame ? (isPreviousQuestionSet[questionIndex] ? "correct-icon" : "incorrect-icon") : "correct-icon nonvisible"}></div>
+              </div>
               <div className="all-answers">
               {allAnswers[questionIndex] && allAnswers[questionIndex].map((answer, answerIndex) => (
                 <button

@@ -19,7 +19,7 @@ export default function App() {
   return (
     <div className="app-main">
       <div className="container">
-        {quizStart ? <Quiz allData={allData} Quizreset = {Quizreset} /> : <Home viewChange={viewChange} />}
+        {quizStart && allData.length !==0 ? <Quiz allData={allData} Quizreset = {Quizreset} /> : <Home viewChange={viewChange} />}
       </div>
     </div>
   )

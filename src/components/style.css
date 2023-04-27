@@ -228,16 +228,31 @@ width:100px;
 /*Responsive design*/
 @media screen and (max-width: 700px) {
     .blob-bottom {
-        width: 15em;
-        height: 15em;
-        left: -25%;
+        width: 10em;
+        height: 10em;
+        left: -30%;
       }
       
     .blob-top {
-        width: 15em;
-        height: 15em;
-        right:-25%;
+        width: 10em;
+        height: 10em;
+        right:-30%;
       }
+    .home-desc{
+        min-width: 150px;
+    }
+    .score{
+        min-width:100px;
+    }
+    .quiz-button{
+        width:100px;
+    }
+    .restartGame{
+        width:130px;
+    }
+    .scoreAndButton{
+        width:60%;
+    }
   }
 
   @media screen and (min-width: 1500px) {
@@ -289,7 +304,7 @@ width:100px;
     .question-question{
         color: #293264;
         font-family: Karla,sans-serif;
-        font-size: 2em;
+        font-size: 1.6em;
         word-wrap: break-word;
         width:100%
     }
@@ -298,7 +313,7 @@ width:100px;
         min-height: 40px;
         min-width: 150px;
         border: 2.3px solid #4d5b9e;
-        font-size: 1.8em;
+        font-size: 1.4em;
 
     }
     .author{

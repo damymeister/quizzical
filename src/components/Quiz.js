@@ -51,7 +51,7 @@ export default function Quiz(props){
     }
     
     React.useEffect(() => {
-      if (countAnswers != 0 && correctAnswers.length != 0 && countAnswers === (correctAnswers.length + 1)) {
+      if (countAnswers !== 0 && correctAnswers.length !== 0 && countAnswers === (correctAnswers.length + 1)) {
         setAllAnswersChecked(true);
       }
     }, [countAnswers]);

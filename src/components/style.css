@@ -22,7 +22,7 @@ body{
     right:-15%;
 	width: 20em;
 	height: 20em;
-	z-index: 1;
+	z-index: -1;
     border-radius: 130px;
   }
 .home-centered{
@@ -345,3 +345,27 @@ width:100px;
         margin:31px;
       }
   }
+  /*Navbar*/
+  .navbar-main{
+    padding:0.7rem;
+    background-color: #DEEBF8;
+    border-radius: 1rem;
+    z-index: 2;
+    margin:0;
+    display: flex;
+    justify-content: flex-end;
+  }
+.login, .register{
+    padding:0.4rem;
+    background: #4D5B9E;
+    border-radius: 15px;
+    color:white;
+    border-color: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    width:8%;
+    margin-right: 0.5rem;
+}
+.login:hover, .register:hover{
+    background:#3f4a80;
+}

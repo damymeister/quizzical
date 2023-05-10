@@ -9,7 +9,7 @@ body{
 	background-color: #DEEBF8;
 	width: 20em;
 	height: 20em;
-	z-index: 1;
+	z-index: -1;
     border-radius: 120px;
     transform: rotate(-128.49deg);
   }
@@ -227,6 +227,17 @@ width:100px;
   }
 /*Responsive design*/
 @media screen and (max-width: 700px) {
+    .navbar-main{
+        padding:100px;
+      }
+    .login, .register{
+   display: none;
+    }
+    .hamburger-icon{
+        display: block !important;
+        width: 30px;
+        height: 30px;
+    }
     .blob-bottom {
         width: 10em;
         height: 10em;
@@ -252,6 +263,9 @@ width:100px;
     }
     .scoreAndButton{
         width:60%;
+    }
+    .question-answer{
+       min-width: 70px;
     }
   }
 
@@ -363,9 +377,19 @@ width:100px;
     border-color: transparent;
     cursor: pointer;
     font-weight: 700;
-    width:8%;
     margin-right: 0.5rem;
+    font-size: 1.2vw;
+    min-width: 100px;
 }
 .login:hover, .register:hover{
     background:#3f4a80;
+}
+.hamburger-icon{
+    display: none;
+}
+.hamburger-icon:hover{
+    cursor:pointer;
+}
+.small-nav-disabled{
+    display: none;
 }

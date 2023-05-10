@@ -1,5 +1,6 @@
 import React from "react"
 import App from "../App";
+import Navbar from "./Navbar"
 export default function Home(props) {
 	const [clickButtonavilable, setclickButtonavilable] = React.useState(false)
 
@@ -48,6 +49,7 @@ export default function Home(props) {
     return(
 
   <div className="home-main">
+	  <Navbar/>
     <div className="blob-top"></div>
     <div className="home-centered">
     <div className="home-title">Quizzical</div>

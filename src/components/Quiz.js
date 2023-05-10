@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./Home"
 import { decode } from 'html-entities';
-
+import Navbar from "./Navbar"
 export default function Quiz(props){
     const allData = props.allData;
     const [allAnswers, setAllAnswers] = React.useState([]);

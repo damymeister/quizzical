@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./Home"
+import "./styles/quiz.css"
 import { decode } from 'html-entities';
 import Navbar from "./Navbar"
 export default function Quiz(props){

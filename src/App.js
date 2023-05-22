@@ -4,6 +4,7 @@ import Quiz from "./components/Quiz"
 import Stats from "./components/Stats";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 export default function App() {
   const [allData, setAllData] = React.useState([])
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
       </BrowserRouter>

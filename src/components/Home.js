@@ -1,9 +1,10 @@
 import React from "react"
-import App from "../App";
 import Navbar from "./Navbar"
+import checkToken from "./checkToken";
+import "./styles/home.css"
 export default function Home(props) {
 	const [clickButtonavilable, setclickButtonavilable] = React.useState(false)
-
+	const [isHovered, setIsHovered] = React.useState(false);
     const [gameOptions, setGameOptions] = React.useState(
 		{
 			category: 9,
@@ -14,7 +15,10 @@ export default function Home(props) {
 
 	const [allQuestionsandAnswers, setallQuestionsandAnswers] = React.useState([])
 
-
+	const handleMouseEnter = () => {
+		setIsHovered(true);
+	  };
+	
   const urlChange = event => {
     const {name, value} = event.target
     setGameOptions(prevGameoptions =>{
@@ -27,7 +31,7 @@ export default function Home(props) {
   }
 
   React.useEffect(() => {
-	if (gameOptions.category !== "" && gameOptions.amount !== 0 && gameOptions.type !== "") {
+	if (gameOptions.category !== "" && gameOptions.amount !== 0 && gameOptions.type !== "" && checkToken()) {
 		setclickButtonavilable(true)
 	  const url =
 		"https://opentdb.com/api.php?amount=" + gameOptions.amount + "&category=" + gameOptions.category +"&type=" + gameOptions.type;
@@ -50,7 +54,6 @@ export default function Home(props) {
 
   <div className="home-main">
 	  <Navbar/>
-    <div className="blob-top"></div>
     <div className="home-centered">
     <div className="home-title">Quizzical</div>
     <div className="home-desc">Answer the questions and test your knowledge!</div>
@@ -115,10 +118,11 @@ export default function Home(props) {
 									<option value="boolean">True or False</option>
 								</select>
     </div>
-    <button className="home-button" disabled={!clickButtonavilable} onClick={changeView}>Start Quiz</button>
+	<div onMouseEnter={handleMouseEnter}>
+    <button className={clickButtonavilable ? "home-button": "home-button disabled"} disabled={!clickButtonavilable} onClick={changeView}>Start Quiz</button>
+	</div>
+	{isHovered && !clickButtonavilable ? <span className="log-in-span">You need to log in</span> : ""}
     </div>
-    <div className="blob-bottom"></div>
   </div>
-
     )
 }

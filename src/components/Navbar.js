@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import hamburger from "./images/menu-bar.png";
 import { Link } from "react-router-dom";
 import logo from "./images/favicon.png"
-import checkToken from "./checkToken"
+import checkToken from "./authentication/checkToken"
 import "./styles/navbar.css"
 export default function Navbar() {
   const [isNavOpen, setisNavOpen] = useState(false);

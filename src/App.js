@@ -2,8 +2,8 @@ import React from "react";
 import Home from "./components/Home"
 import Quiz from "./components/Quiz"
 import Stats from "./components/Stats";
-import Registration from "./components/Registration";
-import Login from "./components/Login";
+import Registration from "./components/authentication/Registration";
+import Login from "./components/authentication/Login";
 import Profile from "./components/Profile";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 export default function App() {

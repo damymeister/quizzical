@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./styles/login.css"
+import "../styles/login.css"
 import checkToken from "./checkToken";
 export default function Registration() {
 
@@ -64,7 +64,7 @@ export default function Registration() {
             resMsg !== "" && <div className="error_msg">{resMsg}</div>
           )}
           <button className="login-button" type="submit">
-            Zaloguj się!
+            Log in!
           </button>
         </form>
         <Link to="/register" className="if-noacc">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./styles/register.css";
-import checkToken from "./checkToken";
+import checkToken from "./authentication/checkToken";
 import jwt_decode from "jwt-decode";
 
 export default function Profile() {

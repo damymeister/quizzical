@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "./Navbar"
-import checkToken from "./checkToken";
+import checkToken from "./authentication/checkToken";
 import "./styles/home.css"
 export default function Home(props) {
 	const [clickButtonavilable, setclickButtonavilable] = React.useState(false)

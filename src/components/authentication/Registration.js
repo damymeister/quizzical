@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "../styles/register.css"
 import checkToken from "./checkToken";
+import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 export default function Registration() {
+  const themeMode = useSelector(state => state.mode)
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +37,9 @@ if(checkToken()){
   return <Link to ="/">You are logged in</Link>
 }else{
   return (
+    <div className={`register-body ${themeMode}`}>
     <div className="register-main">
+         <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
       <h1 className="create-account">Create Account</h1>
       <form onSubmit={handleSubmit}>
         <div className="container-input">
@@ -77,6 +81,7 @@ if(checkToken()){
         </button>
       </form>
       <Link  to="/login" className="if-registered">Already registered?</Link>
+    </div>
     </div>
   );
 }

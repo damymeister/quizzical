@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import hamburger from "./images/menu-bar.png";
 import { Link } from "react-router-dom";
-import logo from "./images/favicon.png"
 import checkToken from "./authentication/checkToken"
 import "./styles/navbar.css"
+import ToggleButton from "./toggleTheme";
+import sun from "./images/sun.png"
+import moon from "./images/moon.png"
 export default function Navbar() {
   const [isNavOpen, setisNavOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -37,7 +39,11 @@ export default function Navbar() {
   return (
     <div className="navbar-container">
     <div className="navbar-main">
-    <img className="logo-navbar" src={logo}></img>
+    <div className="sun-moon-toogle">
+    <img className="logo-sun" src={sun}></img>
+    <ToggleButton/>
+    <img className="logo-moon" src={moon}></img>
+    </div>
     {checkToken()? (
        <div className="navbar-options-container">
       <Link to="/stats"><button className="cont-button">Statistics</button></Link>

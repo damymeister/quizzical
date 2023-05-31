@@ -10,10 +10,18 @@ export default function App() {
   const [allData, setAllData] = React.useState([])
   const [quizStart, setQuizStart] = React.useState(false)
   const [resetQuiz, setResetQuiz] = React.useState(false)
-  
+  const [ifTrueFalseS, setIfTrueFalseS] = React.useState(false)
   function viewChange(propsQuestionsAnswers) {
     setAllData(propsQuestionsAnswers)
     setQuizStart(true)
+  }
+  function ifTrueFalse(value){
+    if(value === "multiple"){
+      setIfTrueFalseS(false)
+    }
+    else{
+      setIfTrueFalseS(true)
+    }
   }
 
   function Quizreset(){
@@ -25,11 +33,11 @@ export default function App() {
      <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path="/" element={quizStart && allData.length !==0 ? <Quiz allData={allData} Quizreset = {Quizreset} /> : <Home viewChange={viewChange} />} />
+          <Route path="/" element={quizStart && allData.length !==0 ? <Quiz allData={allData} Quizreset = {Quizreset} ifTrueFalseS= {ifTrueFalseS}/> : <Home viewChange={viewChange} ifTrueFalse = {ifTrueFalse}/>} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/stats" element={<Stats/>} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
       </div>
       </BrowserRouter>

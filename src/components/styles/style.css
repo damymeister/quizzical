@@ -2,7 +2,6 @@
 body{
   padding:0;
   margin: 0;
-  background-color: #F5F7FB;
 }
 /*Footer*/
 .author{
@@ -61,6 +60,7 @@ body{
         display: block !important;
         width: 30px;
         height: 30px;
+        
     }
     .blob-bottom {
         width: 10em;
@@ -111,7 +111,6 @@ body{
     }
     .home-desc{
     font-size: 30px;
-    color: #293264;
     line-height: 2.5;
     width:65%;
     }
@@ -189,3 +188,109 @@ body{
     
   }
 
+  .arrow-back{
+    position: absolute;
+    left:5px;
+    top:5px;
+    color: white;
+}
+.dark .arrow-back{
+  color: white;
+}
+.light .arrow-back{
+  color: black;
+}
+/*Toggle button */
+.toggle-button{
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0;
+}
+.toggle-button input{
+  opacity:0;
+  width: 0;
+  height:0;
+}
+.slider{
+  position: absolute;
+  cursor: pointer;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 2rem;
+}
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 25px;
+  width:25px;
+  left: 4px;
+  bottom:4px;
+  background-color:black;
+  transition: 0.4s;
+  border-radius: 2rem;
+}
+input:checked + .slider:before{
+  transform: translate(26px);
+  background-color: white;
+}
+input:checked + .slider{
+  background-color: black;
+}
+.logo-sun{
+  width: 35px;
+  height: 35px;
+  margin-right: 1rem;
+}
+.logo-moon{
+  width: 30px;
+  height: 30px;
+  margin-left: 1rem;
+}
+
+/*Theme settings - background*/
+.dark{
+  background-color: #296073;
+}
+.light{
+  background-color:#ccc
+}
+.light .cont-button:hover{
+  background-color: #296073;
+}
+/*Quiz component*/
+.dark .quiz-button{
+  background-color:#ccc;
+  color:black; 
+}
+.light .quiz-button{
+  background-color: #296073;
+}
+.dark .question-question{
+  color:white;
+}
+.dark .question-answer{
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 1);
+  color:black;
+}
+.dark .score{
+  color:white;
+}
+.light .clicked{
+  color:black;
+}
+.light .question-answer{
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 1);
+}
+.light .score{
+ color: #296073;
+}
+.dark .author{
+  color:white;
+}
+/*Registration light-dark*/

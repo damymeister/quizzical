@@ -3,8 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/login.css"
 import checkToken from "./checkToken";
+import { useSelector } from 'react-redux';
 export default function Registration() {
-
+  const themeMode = useSelector(state => state.mode)
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [resMsg, setresMsg] = useState("")
@@ -33,7 +34,9 @@ export default function Registration() {
     return <Link to ="/">You are logged in</Link>
   } else {
     return (
+      <div className={`login-body ${themeMode}`}>
       <div className="login-main">
+           <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
         <h1 className="login-account">Log in</h1>
         <form onSubmit={handleSubmit}>
           <div className="container-input">
@@ -70,6 +73,7 @@ export default function Registration() {
         <Link to="/register" className="if-noacc">
           You dont have an Account?
         </Link>
+      </div>
       </div>
     );
   }

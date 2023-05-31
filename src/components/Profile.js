@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./styles/register.css";
 import checkToken from "./authentication/checkToken";
 import jwt_decode from "jwt-decode";
-
+import { useSelector } from 'react-redux';
 export default function Profile() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +15,7 @@ export default function Profile() {
   const [userId, setUserId] = useState("");
   const [userData, setUserData] = useState(null);
   const [passwordChanged,setPasswordChanged] = useState(false)
-
+  const themeMode = useSelector(state => state.mode)
   useEffect(() => {
     if (token) {
       const decodedToken = jwt_decode(token);
@@ -80,7 +80,9 @@ export default function Profile() {
     return <Link to="/login">Log in to continue</Link>;
   } else {
     return (
+      <div className={`register-body ${themeMode}`}>
       <div className="register-main">
+           <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
         <h1 className="create-account">Update User</h1>
         {userData && (
           <form onSubmit={handleSubmit}>
@@ -124,6 +126,7 @@ export default function Profile() {
             </div>
           </form>
         )}
+      </div>
       </div>
     );
   }

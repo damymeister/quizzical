@@ -2,6 +2,7 @@ import React from "react"
 import Navbar from "./Navbar"
 import checkToken from "./authentication/checkToken";
 import "./styles/home.css"
+import { useSelector } from 'react-redux';
 export default function Home(props) {
 	const [clickButtonavilable, setclickButtonavilable] = React.useState(false)
 	const [isHovered, setIsHovered] = React.useState(false);
@@ -31,28 +32,42 @@ export default function Home(props) {
   }
 
   React.useEffect(() => {
-	if (gameOptions.category !== "" && gameOptions.amount !== 0 && gameOptions.type !== "" && checkToken()) {
-		setclickButtonavilable(true)
-	  const url =
-		"https://opentdb.com/api.php?amount=" + gameOptions.amount + "&category=" + gameOptions.category +"&type=" + gameOptions.type;
-	try{
-	  fetch(url)
-		.then((res) => res.json())
-		.then((data) => setallQuestionsandAnswers(data.results))
-		.catch((error) => console.log(error));
-	}
-	catch(error){
-		console.log("Nie udalo sie wczytac pytan")
-	}
-	}
+	const fetchData = async () => {
+	  if (gameOptions.category !== "" && gameOptions.amount !== 0 && gameOptions.type !== "" && checkToken()) {
+		const url =
+		  "https://opentdb.com/api.php?amount=" + gameOptions.amount + "&category=" + gameOptions.category + "&type=" + gameOptions.type;
+		try {
+		  const response = await fetch(url);
+		  const data = await response.json();
+		  if (data.results && data.results.length > 0) {
+			setclickButtonavilable(true);
+			setallQuestionsandAnswers(data.results);
+		  } else {
+			setallQuestionsandAnswers([]);
+		  }
+		} catch (error) {
+		  console.log(error);
+		}
+	  } else {
+		setallQuestionsandAnswers([]);
+		setclickButtonavilable(false);
+	  }
+	};
+  
+	fetchData();
   }, [gameOptions]);
+  
 
   function changeView() {
-	if(allQuestionsandAnswers.length) props.viewChange(allQuestionsandAnswers)
+	if(allQuestionsandAnswers.length){
+	 props.viewChange(allQuestionsandAnswers)
+	 props.ifTrueFalse(gameOptions.type)
+	}
   }
+  const themeMode = useSelector(state => state.mode);
     return(
 
-  <div className="home-main">
+<div className={`home-main ${themeMode}`}>
 	  <Navbar/>
     <div className="home-centered">
     <div className="home-title">Quizzical</div>
@@ -121,7 +136,7 @@ export default function Home(props) {
 	<div onMouseEnter={handleMouseEnter}>
     <button className={clickButtonavilable ? "home-button": "home-button disabled"} disabled={!clickButtonavilable} onClick={changeView}>Start Quiz</button>
 	</div>
-	{isHovered && !clickButtonavilable ? <span className="log-in-span">You need to log in</span> : ""}
+	{isHovered && !checkToken ? <span className="log-in-span">You need to log in</span> : ""}
     </div>
   </div>
     )

@@ -1,26 +1,34 @@
 /*Navbar*/
 .navbar-main{
-    background-color: #DEEBF8;
     border-radius: 1rem;
     margin:0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1.5rem;
   }
 .cont-button{
     padding:0.4rem;
-    background: #4D5B9E;
+    background: white;
     border-radius: 6px;
-    color:white;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    color:black;
     border-color: transparent;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 600;
     margin-right: 30px;
     font-size: 1.2vw;
     min-width: 100px;
     margin-left:20px;
-    border:2px solid #FFFF;
+    border:2px solid black;
     position: relative;
+}
+.toggle-logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 }
 .cont-button::after{
     content: '';
@@ -38,6 +46,10 @@
 .cont-button:hover::after{
     transform: scaleX(1);
     transform-origin: left;
+}
+.sun-moon-toogle{
+    display: flex;
+    margin-left: 2rem;
 }
 .cont-button:hover{
     background:#3f4a80;
@@ -58,27 +70,22 @@
 .register-small-nav{
     padding:5px;
 }
-.logo-navbar{
-    width:120px;
-    height:90px;
-    margin-left: 30px;
-}
 .small-nav-open{
     display:flex;
     flex-direction: column;
     align-items: center;
     row-gap: 1rem;
     margin-top: 0.8rem;
-    background-color: #DEEBF8;
     border-radius: 1rem;
 }
 .small-nav-open button{
     border-radius: 0.4rem;
-    width:90px;
-    background: #4D5B9E;
-    color: white;
+    width:100px;
+    background: white;
+    color: black;
     font-size: 1rem;
-    font-weight: 1rem;
+    font-weight: 600;
+    border:2px solid black;
 }
 .small-nav-open button:hover{
     background: #4D5B9E;

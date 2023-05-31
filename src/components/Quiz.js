@@ -1,11 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Home from "./Home";
+import { Link } from "react-router-dom";
 import checkToken from "./authentication/checkToken";
 import jwt_decode from "jwt-decode";
 import "./styles/quiz.css";
 import axios from "axios";
 import { decode } from "html-entities";
 const { format } = require("date-fns");
+
 export default function Quiz(props) {
   const allData = props.allData;
   const [allAnswers, setAllAnswers] = React.useState([]);
@@ -22,6 +25,7 @@ export default function Quiz(props) {
   const [resMsg, setresMsg] = React.useState("");
   const [outcome, setOutcome] = React.useState("");
   const [isoutcomeSet, setisoutcomeSet] = React.useState(false)
+  const themeMode = useSelector(state => state.mode);
   const restartGame = () => {
     setAllAnswers([]);
     setSelectedAnswerIndexes([]);
@@ -51,7 +55,7 @@ export default function Quiz(props) {
     const date = new Date();
     const formattedDate = format(date, "dd-MM-yyyy HH:mm:ss");
     try {
-      if(isoutcomeSet){
+      if(isoutcomeSet && allAnswersChecked){
         const results = { userId, outcome: parseFloat(outcome), CurrentDate: formattedDate};
       const url = "http://localhost:5000/results";
       const { data: res } = await axios.post(url, results);
@@ -98,7 +102,22 @@ export default function Quiz(props) {
   React.useEffect(() => {
     if (allData) {
       const ans = allData.map((data) => [data.correct_answer, ...data.incorrect_answers]);
+      if(props.ifTrueFalseS === false){
       setAllAnswers(ans.map((answers) => shuffle(answers)));
+      }
+      else{
+        setAllAnswers(ans.map(answers => {
+          if (answers[0] === 'False') {
+            var temp = answers[1];
+            answers[1] = answers[0];
+            answers[0] = temp;
+            return answers
+          }
+          else{
+            return answers
+          }
+        }));
+      }
     }
   }, [allData]);
 
@@ -173,13 +192,14 @@ export default function Quiz(props) {
   });
 
   return (
-    <div className="quiz-main">
+    <div className={`quiz-main ${themeMode}`}>
+         <Link to ="/"><span className="arrow-back" onClick={restartGame}><i class="fas fa-arrow-left"></i></span></Link>
       <div className="blob-top"></div>
       {allData ? answerAndQuestionsRender : <Home />}
       {endGame ? (
         <div className="scoreAndButton">
           <div className="score">
-            You scored {result} out of {correctAnswers.length} points, and it is {outcome}% of correct answers.
+            You scored {result} out of {correctAnswers.length} points, and it is {outcome*100}% of correct answers.
           </div>
           <button className="quiz-button restartGame" onClick={restartGame}>
             Play Again

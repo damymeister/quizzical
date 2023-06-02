@@ -120,7 +120,7 @@ export default function Profile() {
               <label>Email</label>
             </div>
             {error ? <div className="error_msg">{error}</div> : resMsg !== "" && <div className="error_msg">{resMsg}</div>}
-            <div className="buttpns-profile">
+            <div className="buttons-profile">
             <button className="register-button" type="submit">Update</button>
             <button className="register-button" onClick={deleteUser}>Delete Account</button>
             </div>

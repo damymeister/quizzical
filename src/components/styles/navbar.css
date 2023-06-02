@@ -64,18 +64,11 @@
 .small-nav-disabled{
     display: none;
 }
-.login-small-nav{
-    padding: 5px;
-}
-.register-small-nav{
-    padding:5px;
-}
 .small-nav-open{
     display:flex;
     flex-direction: column;
     align-items: center;
     row-gap: 1rem;
-    margin-top: 0.8rem;
     border-radius: 1rem;
 }
 .small-nav-open button{
@@ -91,9 +84,7 @@
     background: #4D5B9E;
     opacity:0.6;
 }
-.small-nav-open button:nth-child(1){
-    margin-top: 1rem;
-}
+
 .small-nav-open button:nth-child(3){
     margin-bottom:1rem;
 }

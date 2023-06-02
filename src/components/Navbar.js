@@ -67,7 +67,7 @@ export default function Navbar() {
         { checkToken() ? (
         <div className={isNavOpen ? "small-nav-open" : "small-nav-disabled"}>
         <Link to="/stats"><button className="register-small-nav">Statistics</button></Link>
-        <Link to="/profile"><button className="cont-button">Profile</button></Link>
+        <Link to="/profile"><button className="register-small-nav">Profile</button></Link>
         <button className="register-small-nav" onClick={handleLogout}>Logout</button>
         </div>
         ) : (

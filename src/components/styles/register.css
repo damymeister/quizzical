@@ -16,6 +16,7 @@
 	width:40%;
 	padding:30px;
 	border-radius: 20px;
+	min-width: 250px;
 }
 .container-input{
 	display:flex;
@@ -27,6 +28,7 @@
 	width: 70%;
 }
 .container-input label{
+
 	position: absolute;
 	top:50%;
 	left:20px;
@@ -74,12 +76,14 @@
 	margin-left:1.4rem;
 	margin-bottom:1.5rem;
 	padding: 10px;
-	width: 40%;
+	width: 25%;
 	background-color: #296073;
 	color:white;
 	font-size: 0.8rem;
 	font-weight: 700;
 	border-radius:7px;
+	min-width: 100px;
+
 }
 .register-button:hover{
 	opacity:0.7
@@ -91,4 +95,14 @@
 }
 .if-registered:hover{
 	text-decoration: underline;
+}
+form{
+	width:80%;
+	min-width: 200px;
+}
+.buttons-profile{
+	display:flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }

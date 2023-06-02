@@ -251,6 +251,7 @@ input:checked + .slider{
   width: 30px;
   height: 30px;
   margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 /*Theme settings - background*/

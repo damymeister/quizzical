@@ -8,7 +8,6 @@ import "./styles/quiz.css";
 import axios from "axios";
 import { decode } from "html-entities";
 const { format } = require("date-fns");
-
 export default function Quiz(props) {
   const allData = props.allData;
   const [allAnswers, setAllAnswers] = React.useState([]);

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/login.css"
 import checkToken from "./checkToken";
 import { useSelector } from 'react-redux';
+import StyledH1 from "../styles/StyledComponents/h1.tsx"
 export default function Registration() {
   const themeMode = useSelector(state => state.mode)
   const [name, setName] = useState("");
@@ -37,7 +38,7 @@ export default function Registration() {
       <div className={`login-body ${themeMode}`}>
       <div className="login-main">
            <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
-        <h1 className="login-account">Log in</h1>
+        <StyledH1>Log in</StyledH1>
         <form onSubmit={handleSubmit}>
           <div className="container-input">
             <ion-icon name="arrow-forward-circle-outline"></ion-icon>

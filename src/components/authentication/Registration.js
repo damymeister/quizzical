@@ -4,6 +4,7 @@ import "../styles/register.css"
 import checkToken from "./checkToken";
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import StyledH1 from "../styles/StyledComponents/h1.tsx"
 export default function Registration() {
   const themeMode = useSelector(state => state.mode)
   const [name, setName] = useState("");
@@ -40,7 +41,7 @@ if(checkToken()){
     <div className={`register-body ${themeMode}`}>
     <div className="register-main">
          <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
-      <h1 className="create-account">Create Account</h1>
+      <StyledH1>Create Account</StyledH1>
       <form onSubmit={handleSubmit}>
         <div className="container-input">
         <ion-icon name="arrow-forward-circle-outline"></ion-icon>

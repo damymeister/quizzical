@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector } from 'react-redux';
 import "./styles/stats.css"
 import { Link } from "react-router-dom";
+import StyledH1 from "./styles/StyledComponents/h1.tsx";
 export default function Stats() {
   const [userData, setUserData] = useState([]);
   const [userDetails, setUserDetails] = useState(null);
@@ -50,7 +51,7 @@ export default function Stats() {
     <div className={`stats-main ${themeMode}`}>
     <div className="stats-container">
        <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
-      <h1>Users Statistics</h1>
+      <StyledH1>Users Statistics</StyledH1>
       {userData.map((data) => (
         <div className="stats-user" key={data.userId}>
           <p><h4>Username:</h4> {data.name}</p>

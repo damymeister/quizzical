@@ -5,6 +5,7 @@ import "./styles/register.css";
 import checkToken from "./authentication/checkToken";
 import jwt_decode from "jwt-decode";
 import { useSelector } from 'react-redux';
+import StyledH1 from "./styles/StyledComponents/h1.tsx";
 export default function Profile() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -83,7 +84,7 @@ export default function Profile() {
       <div className={`register-body ${themeMode}`}>
       <div className="register-main">
            <Link to ="/"><span className="arrow-back"><i class="fas fa-arrow-left"></i></span></Link>
-        <h1 className="create-account">Update User</h1>
+           <StyledH1>Update User</StyledH1>
         {userData && (
           <form onSubmit={handleSubmit}>
             <div className="container-input">
